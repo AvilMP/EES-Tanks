@@ -123,5 +123,5 @@ bool hit_check(Pocisk pocisk, Obiekt_mov obiekt)
 
 void obiect_loader(Mapa mapa, Obiekt_mov obiekt)
 {
-    cout << "test";
+    cout << "test/git/test";
 }
