@@ -3,6 +3,8 @@
 #include <conio.h>
 #include <Windows.h>
 
+
+
 #include "Mapa.h"
 #include "Fizyka.h"
 #include "Obiekt_mov.h"
@@ -123,5 +125,5 @@ bool hit_check(Pocisk pocisk, Obiekt_mov obiekt)
 
 void obiect_loader(Mapa mapa, Obiekt_mov obiekt)
 {
-    cout << "test/git/test";
+    cout << "t";
 }
