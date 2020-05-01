@@ -103,6 +103,10 @@ int main()
                 break;
             }
             }
+            while (_kbhit())
+            {
+                _getche();
+            }
         }
 
         system("cls");
