@@ -5,6 +5,7 @@
 using namespace std;
 
 class Pocisk;
+class Mapa;
 
 class Obiekt_mov
 {

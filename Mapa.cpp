@@ -5,7 +5,7 @@
 
 using namespace std;
 
-Mapa::Mapa(int wysokosc, int szerokosc, int liczba_bot)
+Mapa::Mapa(int wysokosc, int szerokosc)
 {
 	this->wysokosc = wysokosc;
 	this->szerokosc = szerokosc;
@@ -20,23 +20,23 @@ void Mapa::map_generator(Obiekt_mov p[6])
 		{
 			for (int i = 0; i < 6; i++ )
 			{
-				if ((((x - 1) == p[i].pos_x) && (y == p[i].pos_y)) || ((x == p[i].pos_x) && (y == p[i].pos_y)) || (((x + 1) == p[i].pos_x) && (y == p[i].pos_y)))		// chck pozycja
+				if ((((x - 1) == p[i].pos_x) && (y == (p[i].pos_y - 3))) || ((x == p[i].pos_x) && (y == (p[i].pos_y - 3))) || (((x + 1) == p[i].pos_x) && (y == (p[i].pos_y - 3))))		// chck pozycja
 				{
 					if (p[i].direction == 1)					// check kierunek W
 					{
 						if ((x + 1) == p[i].pos_x)
 						{
-							cout << "  xx  ";
+							std::cout << "  xx  ";
 							y += 3;
 						}
 						else if ((x == p[i].pos_x))
 						{
-							cout << "xxooxx";
+							std::cout << "xxooxx";
 							y += 3;
 						}
 						else if (((x - 1) == p[i].pos_x))
 						{
-							cout << "xx  xx";
+							std::cout << "xx  xx";
 							y += 3;
 						}
 					}
@@ -44,17 +44,17 @@ void Mapa::map_generator(Obiekt_mov p[6])
 					{
 						if ((x + 1) == p[i].pos_x)
 						{
-							cout << "xx  xx";
+							std::cout << "xx  xx";
 							y += 3;
 						}
 						else if ((x == p[i].pos_x))
 						{
-							cout << "xxooxx";
+							std::cout << "xxooxx";
 							y += 3;
 						}
 						else if (((x - 1) == p[i].pos_x))
 						{
-							cout << "  xx  ";
+							std::cout << "  xx  ";
 							y += 3;
 						}
 					}
@@ -62,17 +62,17 @@ void Mapa::map_generator(Obiekt_mov p[6])
 					{
 						if ((x + 1) == p[i].pos_x)
 						{
-							cout << "  xxxx";
+							std::cout << "  xxxx";
 							y += 3;
 						}
 						else if ((x == p[i].pos_x))
 						{
-							cout << "xxoo  ";
+							std::cout << "xxoo  ";
 							y += 3;
 						}
 						else if (((x - 1) == p[i].pos_x))
 						{
-							cout << "  xxxx";
+							std::cout << "  xxxx";
 							y += 3;
 						}
 					}
@@ -80,17 +80,17 @@ void Mapa::map_generator(Obiekt_mov p[6])
 					{
 						if ((x + 1) == p[i].pos_x)
 						{
-							cout << "xxxx  ";
+							std::cout << "xxxx  ";
 							y += 3;
 						}
 						else if ((x == p[i].pos_x))
 						{
-							cout << "  ooxx";
+							std::cout << "  ooxx";
 							y += 3;
 						}
 						else if (((x - 1) == p[i].pos_x))
 						{
-							cout << "xxxx  ";
+							std::cout << "xxxx  ";
 							y += 3;
 						}
 					}
@@ -98,13 +98,13 @@ void Mapa::map_generator(Obiekt_mov p[6])
 			}
 			if((x==0)||(x==wysokosc)||(y==0)||(y==szerokosc))
 			{
-				cout << "xx";
+				std::cout << "xx";
 			}
 			else
 			{
-				cout << "  ";
+				std::cout << "  ";
 			}
 		}
-		cout << "\n";
+		std::cout << "\n";
 	 }
 }

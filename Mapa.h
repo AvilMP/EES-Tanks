@@ -23,7 +23,7 @@ private:
 
 
 public:
-	Mapa(int wysokosc, int szerokosc, int liczba_bot);
+	Mapa(int wysokosc, int szerokosc);
 
 	~Mapa() {};
 

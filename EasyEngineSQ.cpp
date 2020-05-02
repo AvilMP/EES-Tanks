@@ -19,12 +19,10 @@ void obiect_loader(Mapa mapa, Obiekt_mov obiekt);
 
 void player_mov(); // ruch gracza
 
-
-
 // obiekty
 
-Mapa level_0(45,75,6);
-Obiekt_mov player[6] = { Obiekt_mov(10, 10, 1, 1, 1, 1), Obiekt_mov(20, 20, 2, 1, 1, 1), Obiekt_mov(20, 40, 2, 1, 1, 1), 
+Mapa level_0(45,74);
+Obiekt_mov player[6] = { Obiekt_mov(20, 40, 1, 1, 1, 1), Obiekt_mov(20, 20, 2, 1, 1, 1), Obiekt_mov(20, 30, 2, 1, 1, 1), 
                          Obiekt_mov(20, 50, 2, 1, 1, 1), Obiekt_mov(30, 30, 3, 1, 1, 1), Obiekt_mov(40, 40, 4, 1, 1, 1), };
 
 int main()
