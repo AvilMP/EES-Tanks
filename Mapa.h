@@ -20,14 +20,14 @@ private:
 	int wysokosc;	// okna
 	int szerokosc;	// okna
 
-	int liczba_bot;
+
 
 public:
 	Mapa(int wysokosc, int szerokosc, int liczba_bot);
 
 	~Mapa() {};
 
-	void map_generator(Obiekt_mov p);
+	void map_generator(Obiekt_mov p[6]);
 
 };
 

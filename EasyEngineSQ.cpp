@@ -17,15 +17,19 @@ using namespace std;
 bool hit_check(Pocisk pocisk, Obiekt_mov obiekt);    //sprawdza trafienie.
 void obiect_loader(Mapa mapa, Obiekt_mov obiekt);
 
+void player_mov(); // ruch gracza
+
 
 
 // obiekty
 
 Mapa level_0(45,75,6);
+Obiekt_mov player[6] = { Obiekt_mov(10, 10, 1, 1, 1, 1), Obiekt_mov(20, 20, 2, 1, 1, 1), Obiekt_mov(20, 40, 2, 1, 1, 1), 
+                         Obiekt_mov(20, 50, 2, 1, 1, 1), Obiekt_mov(30, 30, 3, 1, 1, 1), Obiekt_mov(40, 40, 4, 1, 1, 1), };
 
 int main()
 {
-    Obiekt_mov player(20, 20, 1, 3, 1, 1);
+    
 
     cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ The Tanks ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
     cout << " Pls use fullscreen :)\n";
@@ -38,76 +42,15 @@ int main()
 
     system("cls");
 
-    char ruch;
 
     while (true)
     {
-        level_0.map_generator(player);
+        level_0.map_generator(&player[0]);
         
 
         Sleep(720);
 
-        while( _kbhit() != 0)
-        { 
-            ruch = _getch();
-
-            switch (ruch)
-            {
-            case 'w':
-            {
-                player.mov_up_W();
-
-
-
-                break;
-            }
-            case 's':
-            {
-                player.mov_down_S();
-                
-
-
-
-                break;
-            }
-            case 'a':
-            {
-                player.mov_left_A();
-
-
-
-                break;
-            }
-            case 'd':
-            {
-                player.mov_right_D();
-
-
-
-                break;
-            }
-            case '5':
-            {
-
-
-
-
-             
-            }
-            case ' ':
-            {
-
-
-
-
-                break;
-            }
-            }
-            while (_kbhit())
-            {
-                _getche();
-            }
-        }
+        player_mov();
 
         system("cls");
     }
@@ -130,4 +73,71 @@ bool hit_check(Pocisk pocisk, Obiekt_mov obiekt)
 void obiect_loader(Mapa mapa, Obiekt_mov obiekt)
 {
     cout << "t";
+}
+
+void player_mov()
+{
+    char ruch;
+
+    while (_kbhit() != 0)
+    {
+        ruch = _getch();
+
+        switch (ruch)
+        {
+        case 'w':
+        {
+            player[0].mov_up_W();
+
+
+
+            break;
+        }
+        case 's':
+        {
+            player[0].mov_down_S();
+
+
+
+
+            break;
+        }
+        case 'a':
+        {
+            player[0].mov_left_A();
+
+
+
+            break;
+        }
+        case 'd':
+        {
+            player[0].mov_right_D();
+
+
+
+            break;
+        }
+        case '5':
+        {
+
+
+
+
+
+        }
+        case ' ':
+        {
+
+
+
+
+            break;
+        }
+        }
+        while (_kbhit())
+        {
+            _getche();
+        }
+    }
 }
