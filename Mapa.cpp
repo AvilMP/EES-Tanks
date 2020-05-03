@@ -113,7 +113,6 @@ void Mapa::map_generator(Obiekt_mov p[6])
 				std::cout << "  ";
 			}
 			control = 1;
-				
 		}
 		std::cout << "\n";
 	 }
