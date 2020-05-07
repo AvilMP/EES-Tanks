@@ -12,7 +12,7 @@ Mapa::Mapa(int wysokosc, int szerokosc)
 	//this->liczba_bot = liczba_bot;
 }
 
-void Mapa::map_generator(Obiekt_mov p[6])
+void Mapa::map_generator(Obiekt_mov p[9])
 {
 	int control = 1;
 
@@ -20,7 +20,7 @@ void Mapa::map_generator(Obiekt_mov p[6])
 	{
 		for (int y = 0; y <= szerokosc; y++)		// os y	(pozioma)
 		{
-			for (int i = 0; i < 6; i++)
+			for (int i = 0; i < 9; i++)
 			{
 				if ((((x + 1) == p[i].pos_x) && ((y + 1) == p[i].pos_y)) || ((x == p[i].pos_x) && ((y + 1) == p[i].pos_y)) || (((x - 1) == p[i].pos_x) && ((y + 1) == p[i].pos_y)))		// chck pozycja
 				{
@@ -112,7 +112,7 @@ void Mapa::map_generator(Obiekt_mov p[6])
 			{
 				std::cout << "  ";
 			}
-			control = 1;
+			control = 1; 
 		}
 		std::cout << "\n";
 	 }

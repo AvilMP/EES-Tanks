@@ -1,8 +1,10 @@
 #include "Obiekt_mov.h"
 #include "Mapa.h"
+#include "Fizyka.h"
 
 
 #include <iostream>
+#include <time.h>
 
 
 using namespace std;
@@ -28,9 +30,7 @@ void Obiekt_mov::mov_up_W()
 	{
 		pos_x -= 1;
 	}
-
 	direction = 1;
-	
 }
 
 void Obiekt_mov::mov_down_S()
@@ -39,7 +39,6 @@ void Obiekt_mov::mov_down_S()
 	{
 		pos_x += 1;
 	}
-
 	direction = 3;
 }
 
@@ -64,4 +63,48 @@ void Obiekt_mov::mov_right_D()
 void Obiekt_mov::fire_5()
 {
 
+}
+
+void Obiekt_mov::ai_module()
+{
+	srand(time(NULL));
+
+	static int changer = 1;
+
+	int random = 1;
+	changer += 1;
+
+
+
+	random = rand() % 4 + 1;
+
+	random = (changer + random) % 4 + 1;
+
+	switch (random)
+	{
+	case 1:
+	{
+		mov_up_W();
+		break;
+	}
+	case 2:
+	{
+		mov_down_S();
+		break;
+	}
+	case 3:
+	{
+		mov_left_A();
+		break;
+	}
+	case 4:
+	{
+		mov_right_D();
+		break;
+	}
+	case 5:
+	{
+		break;
+	}
+	}
 }

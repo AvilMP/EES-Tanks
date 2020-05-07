@@ -4,12 +4,17 @@
 
 using namespace std;
 
+class Obiect_mov;
+
 class Fizyka
 {
 public:
 
 private:
 
+
 public:
+
+
 };
 

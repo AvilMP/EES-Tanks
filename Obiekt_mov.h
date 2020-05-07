@@ -6,12 +6,14 @@ using namespace std;
 
 class Pocisk;
 class Mapa;
+class Fizyka;
 
 class Obiekt_mov
 {
 public:
 
 	friend class Mapa;
+	friend class Fizyka;
 
 	friend bool hit_check(Pocisk pocisk, Obiekt_mov obiekt);
 	
@@ -36,5 +38,7 @@ public:
 	void mov_right_D();
 
 	void fire_5();
+
+	void ai_module();
 
 };

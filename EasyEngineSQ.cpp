@@ -4,7 +4,6 @@
 #include <Windows.h>
 
 
-
 #include "Mapa.h"
 #include "Fizyka.h"
 #include "Obiekt_mov.h"
@@ -22,13 +21,14 @@ void player_mov(); // ruch gracza
 // obiekty
 
 Mapa level_0(45,74);
-Obiekt_mov player[6] = { Obiekt_mov(20, 35, 1, 1, 1, 1), Obiekt_mov(20, 20, 2, 1, 1, 1), Obiekt_mov(20, 30, 2, 1, 1, 1), 
-                         Obiekt_mov(30, 30, 2, 1, 1, 1), Obiekt_mov(30, 33, 3, 1, 1, 1), Obiekt_mov(40, 40, 4, 1, 1, 1), };
+Obiekt_mov player[9] = { Obiekt_mov(10, 10, 1, 1, 1, 1), Obiekt_mov(20, 20, 2, 1, 1, 1), Obiekt_mov(30, 30, 2, 1, 1, 1), 
+                         Obiekt_mov(40, 10, 2, 1, 1, 1), Obiekt_mov(40, 20, 3, 1, 1, 1), Obiekt_mov(40, 30, 4, 1, 1, 1),
+                         Obiekt_mov(40, 55, 2, 1, 1, 1), Obiekt_mov(40, 60, 3, 1, 1, 1), Obiekt_mov(40, 70, 4, 1, 1, 1), };
+
 
 int main()
 {
     
-
     cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ The Tanks ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
     cout << " Pls use fullscreen :)\n";
 
@@ -43,14 +43,16 @@ int main()
 
     while (true)
     {
+
         player_mov();
+
+        for (int i = 1; i < 9; i++)
+        {
+            player[i].ai_module();
+        }
+
         level_0.map_generator(&player[0]);
-        
-
-        Sleep(520);
-
-       
-
+        Sleep(420);
         system("cls");
     }
 
@@ -87,49 +89,29 @@ void player_mov()
         case 'w':
         {
             player[0].mov_up_W();
-
-
-
             break;
         }
         case 's':
         {
             player[0].mov_down_S();
-
-
-
-
             break;
         }
         case 'a':
         {
             player[0].mov_left_A();
-
-
-
             break;
         }
         case 'd':
         {
             player[0].mov_right_D();
-
-
-
             break;
         }
         case '5':
         {
 
-
-
-
-
         }
         case ' ':
         {
-
-
-
 
             break;
         }
