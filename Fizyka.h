@@ -4,17 +4,20 @@
 
 using namespace std;
 
-class Obiect_mov;
+class Obiekt_mov;
 
 class Fizyka
 {
 public:
 
-private:
+	int kolizja[9][4];
 
+private:
 
 public:
 
+	void set_kolizja();
 
+	void check_kolizja(Obiekt_mov pl[9]);
 };
 

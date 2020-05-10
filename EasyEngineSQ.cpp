@@ -14,28 +14,28 @@ using namespace std;
 // glowne funkcje;
 
 bool hit_check(Pocisk pocisk, Obiekt_mov obiekt);    //sprawdza trafienie.
-void obiect_loader(Mapa mapa, Obiekt_mov obiekt);
 
 void player_mov(); // ruch gracza
 
 // obiekty
 
 Mapa level_0(45,74);
-Obiekt_mov player[9] = { Obiekt_mov(10, 10, 1, 1, 1, 1), Obiekt_mov(20, 20, 2, 1, 1, 1), Obiekt_mov(30, 30, 2, 1, 1, 1), 
+Obiekt_mov player[9] = { Obiekt_mov(10, 10, 1, 1, 1, 1), Obiekt_mov(15, 20, 2, 1, 1, 1), Obiekt_mov(30, 30, 2, 1, 1, 1), 
                          Obiekt_mov(40, 10, 2, 1, 1, 1), Obiekt_mov(40, 20, 3, 1, 1, 1), Obiekt_mov(40, 30, 4, 1, 1, 1),
                          Obiekt_mov(40, 55, 2, 1, 1, 1), Obiekt_mov(40, 60, 3, 1, 1, 1), Obiekt_mov(40, 70, 4, 1, 1, 1), };
-
+Fizyka kolizja;
 
 int main()
 {
-    
+    kolizja.set_kolizja();
+
     cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ The Tanks ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
     cout << " Pls use fullscreen :)\n";
 
     for (int i = 0; i <= 30; i++)
     {
         cout << " . ";
-        Sleep(100);
+        Sleep(80);
     }
 
     system("cls");
@@ -43,16 +43,18 @@ int main()
 
     while (true)
     {
-
+        kolizja.check_kolizja(&player[0]);
+        cout << kolizja.kolizja[0][1];
         player_mov();
 
-        for (int i = 1; i < 9; i++)
+        for (int i = 2; i < 9; i++)
         {
-            player[i].ai_module();
+           player[i].ai_module();
         }
 
         level_0.map_generator(&player[0]);
-        Sleep(420);
+
+        Sleep(400);
         system("cls");
     }
 
@@ -71,11 +73,6 @@ bool hit_check(Pocisk pocisk, Obiekt_mov obiekt)
     else return false;
 }
 
-void obiect_loader(Mapa mapa, Obiekt_mov obiekt)
-{
-    cout << "t";
-}
-
 void player_mov()
 {
     char ruch;
@@ -88,7 +85,7 @@ void player_mov()
         {
         case 'w':
         {
-            player[0].mov_up_W();
+            player[0].mov_up_W(kolizja.kolizja[0][1]);
             break;
         }
         case 's':

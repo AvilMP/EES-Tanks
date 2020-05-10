@@ -18,13 +18,14 @@ public:
 	friend bool hit_check(Pocisk pocisk, Obiekt_mov obiekt);
 	
 
-public:
+private:
 
 	int pos_x, pos_y;
 	int direction;
 	int hp;
 	int speed;
 	int reload;
+	
 
 public:
 
@@ -32,7 +33,7 @@ public:
 
 	~Obiekt_mov();
 
-	void mov_up_W();
+	void mov_up_W(int kolizja);
 	void mov_down_S();
 	void mov_left_A();
 	void mov_right_D();
@@ -40,5 +41,4 @@ public:
 	void fire_5();
 
 	void ai_module();
-
 };

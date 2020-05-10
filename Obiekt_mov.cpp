@@ -24,9 +24,9 @@ Obiekt_mov::~Obiekt_mov()
 
 }
 
-void Obiekt_mov::mov_up_W()
+void Obiekt_mov::mov_up_W(int kolizja)
 {
-	if (pos_x > 2 && (direction == 1))
+	if ((pos_x > 2) && (direction == 1) && (kolizja == 0 ))
 	{
 		pos_x -= 1;
 	}
@@ -84,27 +84,27 @@ void Obiekt_mov::ai_module()
 	{
 	case 1:
 	{
-		mov_up_W();
+		//mov_up_W();
 		break;
 	}
 	case 2:
 	{
-		mov_down_S();
+		//mov_down_S();
 		break;
 	}
 	case 3:
 	{
-		mov_left_A();
+		//mov_left_A();
 		break;
 	}
 	case 4:
 	{
-		mov_right_D();
+		//mov_right_D();
 		break;
 	}
 	case 5:
 	{
 		break;
 	}
-	}
+}
 }

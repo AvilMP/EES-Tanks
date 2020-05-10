@@ -13,8 +13,6 @@ public:
 
 	friend class Pocisk;
 
-	friend void obiect_loader(Mapa mapa, Obiekt_mov obiekt);
-
 private:
 
 	int wysokosc;	// okna
@@ -28,6 +26,5 @@ public:
 	~Mapa() {};
 
 	void map_generator(Obiekt_mov p[9]);
-
 };
 
