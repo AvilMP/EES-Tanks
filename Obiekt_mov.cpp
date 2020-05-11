@@ -33,27 +33,27 @@ void Obiekt_mov::mov_up_W(int kolizja)
 	direction = 1;
 }
 
-void Obiekt_mov::mov_down_S()
+void Obiekt_mov::mov_down_S(int kolizja)
 {
-	if (pos_x < 43 && (direction == 3))
+	if (pos_x < 43 && (direction == 3) && (kolizja == 0))
 	{
 		pos_x += 1;
 	}
 	direction = 3;
 }
 
-void Obiekt_mov::mov_left_A()
+void Obiekt_mov::mov_left_A(int kolizja)
 {
-	if (pos_y > 2 && (direction == 2))
+	if (pos_y > 2 && (direction == 2) && (kolizja == 0))
 	{
 		pos_y -= 1;
 	}
 	direction = 2;
 }
 
-void Obiekt_mov::mov_right_D()
+void Obiekt_mov::mov_right_D(int kolizja)
 {
-	if (pos_y < 72 && (direction == 4))
+	if (pos_y < 72 && (direction == 4) && (kolizja == 0))
 	{
 		pos_y += 1;
 	}

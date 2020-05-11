@@ -44,7 +44,7 @@ int main()
     while (true)
     {
         kolizja.check_kolizja(&player[0]);
-        cout << kolizja.kolizja[0][1];
+        cout << kolizja.kolizja[0][2];
         player_mov();
 
         for (int i = 2; i < 9; i++)
@@ -90,17 +90,17 @@ void player_mov()
         }
         case 's':
         {
-            player[0].mov_down_S();
+            player[0].mov_down_S(kolizja.kolizja[0][3]);
             break;
         }
         case 'a':
         {
-            player[0].mov_left_A();
+            player[0].mov_left_A(kolizja.kolizja[0][2]);
             break;
         }
         case 'd':
         {
-            player[0].mov_right_D();
+            player[0].mov_right_D(kolizja.kolizja[0][4]);
             break;
         }
         case '5':

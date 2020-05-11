@@ -10,7 +10,7 @@ class Fizyka
 {
 public:
 
-	int kolizja[9][4];
+	int kolizja[9][5];
 
 private:
 

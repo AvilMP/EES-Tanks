@@ -34,9 +34,9 @@ public:
 	~Obiekt_mov();
 
 	void mov_up_W(int kolizja);
-	void mov_down_S();
-	void mov_left_A();
-	void mov_right_D();
+	void mov_down_S(int kolizja);
+	void mov_left_A(int kolizja);
+	void mov_right_D(int kolizja);
 
 	void fire_5();
 
