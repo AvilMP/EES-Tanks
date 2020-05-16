@@ -15,20 +15,20 @@ public:
 	friend bool hit_check(Pocisk pocisk, Obiekt_mov obiekt);
 	
 
-private:
+public:
 
-	int pos_x, pos_y;
-	int direction;
+	int pos_x, pos_y; // 1, 2
+	int direction;	// 3
 	int power; // opcjonanie;
 	int speed;
+	int visible;
 
 public:
 
-	Pocisk(int = 0, int = 0, int = 0, int = 1, int = 2);
+	Pocisk(int = 0, int = 0, int = 0, int = 1, int = 1, int = 0);
 
 	~Pocisk();
 
 	void new_pos();
-
 };
 

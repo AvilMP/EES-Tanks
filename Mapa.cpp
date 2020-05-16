@@ -1,5 +1,6 @@
 #include "Mapa.h"
 #include "Obiekt_mov.h"
+#include "Pocisk.h"
 
 #include <iostream>
 
@@ -12,7 +13,7 @@ Mapa::Mapa(int wysokosc, int szerokosc)
 	//this->liczba_bot = liczba_bot;
 }
 
-void Mapa::map_generator(Obiekt_mov p[9])
+void Mapa::map_generator(Obiekt_mov p[9], Pocisk s[9])
 {
 	int control = 1;
 
@@ -22,7 +23,12 @@ void Mapa::map_generator(Obiekt_mov p[9])
 		{
 			for (int i = 0; i < 9; i++)
 			{
-				if ((((x + 1) == p[i].pos_x) && ((y + 1) == p[i].pos_y)) || ((x == p[i].pos_x) && ((y + 1) == p[i].pos_y)) || (((x - 1) == p[i].pos_x) && ((y + 1) == p[i].pos_y)))		// chck pozycja
+				if ((s[i].pos_x == x) && (s[i].pos_y == y) && (s[i].visible == 1))
+				{
+					cout << "<>";
+					y++;
+				}
+				if (((((x + 1) == p[i].pos_x) && ((y + 1) == p[i].pos_y)) || ((x == p[i].pos_x) && ((y + 1) == p[i].pos_y)) || (((x - 1) == p[i].pos_x) && ((y + 1) == p[i].pos_y))) && p[i].hp != 0)	// chck pozycja
 				{
 					if (p[i].direction == 1)					// check kierunek W
 					{
@@ -101,7 +107,6 @@ void Mapa::map_generator(Obiekt_mov p[9])
 					}
 					control = 0;
 				}
-
 			}
 			if ((x == 0) || (x == wysokosc) || (y == 0) || (y == szerokosc))
 			{

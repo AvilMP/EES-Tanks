@@ -1,6 +1,7 @@
 #include "Obiekt_mov.h"
 #include "Mapa.h"
 #include "Fizyka.h"
+#include "Pocisk.h"
 
 
 #include <iostream>
@@ -60,12 +61,36 @@ void Obiekt_mov::mov_right_D(int kolizja)
 	direction = 4;
 }
 
-void Obiekt_mov::fire_5()
+void Obiekt_mov::fire_5(Pocisk &pc)
 {
-
+	pc.visible = 1;
+	if (direction == 1)
+	{
+		pc.direction = 1;
+		pc.pos_x = (pos_x - 3);
+		pc.pos_y = pos_y;
+	}
+	else if (direction == 3)
+	{
+		pc.direction = 3;
+		pc.pos_x = (pos_x + 3);
+		pc.pos_y = pos_y;
+	}
+	else if (direction == 2)
+	{
+		pc.direction = 2;
+		pc.pos_x = pos_x;
+		pc.pos_y = (pos_y - 3);
+	}
+	else if (direction == 4)
+	{
+		pc.direction = 4;
+		pc.pos_x = pos_x ;
+		pc.pos_y = (pos_y + 4);
+	}
 }
 
-void Obiekt_mov::ai_module()
+void Obiekt_mov::ai_module(int kol_w, int kol_s, int kol_a, int kol_d)
 {
 	srand(time(NULL));
 
@@ -84,27 +109,27 @@ void Obiekt_mov::ai_module()
 	{
 	case 1:
 	{
-		//mov_up_W();
+		mov_up_W(kol_w);
 		break;
 	}
 	case 2:
 	{
-		//mov_down_S();
+		mov_down_S(kol_s);
 		break;
 	}
 	case 3:
 	{
-		//mov_left_A();
+		mov_left_A(kol_a);
 		break;
 	}
 	case 4:
 	{
-		//mov_right_D();
+		mov_right_D(kol_d);
 		break;
 	}
 	case 5:
 	{
 		break;
 	}
-}
+	}
 }

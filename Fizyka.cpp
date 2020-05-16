@@ -21,10 +21,14 @@ void Fizyka::check_kolizja(Obiekt_mov pl[9])
 {
 	int break_point = 0;
 
-	for (int i = 0; i < 9; i++)
-	{
-		for (int j = 1; j < 9; j++)
+	for (int i = 0; i < 9; i++)			////
+	{									///// !!!!!!!!!!!!!! fix!!
+		for (int j = 0; j < 9; j++)		////
 		{
+			if (i == j)
+			{
+				j++;
+			}
 			if ( (pl[i].pos_x == (pl[j].pos_x + 3)) && (abs(pl[i].pos_y - pl[j].pos_y) <= 2)  )	//lock w (1);
 			{
 				kolizja[i][1] = 1;

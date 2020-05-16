@@ -25,6 +25,6 @@ public:
 
 	~Mapa() {};
 
-	void map_generator(Obiekt_mov p[9]);
+	void map_generator(Obiekt_mov p[9], Pocisk s[9]);
 };
 

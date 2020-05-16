@@ -20,11 +20,11 @@ public:
 
 private:
 
-	int pos_x, pos_y;
-	int direction;
-	int hp;
-	int speed;
-	int reload;
+	int pos_x, pos_y;	 // 1,2
+	int direction;		 // 3
+	int hp;				 // 4
+	int speed;			 // 5
+	int reload;			 // 6
 	
 
 public:
@@ -38,7 +38,7 @@ public:
 	void mov_left_A(int kolizja);
 	void mov_right_D(int kolizja);
 
-	void fire_5();
+	void fire_5(Pocisk &pc);
 
-	void ai_module();
+	void ai_module(int kol_w, int kol_s, int kol_a, int kol_d);
 };
