@@ -16,7 +16,6 @@ public:
 	friend class Fizyka;
 
 	friend void hit_check(Pocisk &pocisk, Obiekt_mov &obiekt);
-	
 
 private:
 
@@ -26,7 +25,6 @@ private:
 	int speed;			 // 5
 	int reload;			 // 6
 	
-
 public:
 
 	Obiekt_mov(int = 2, int = 2, int = 0, int = 3, int = 1, int = 1);
@@ -37,7 +35,6 @@ public:
 	void mov_down_S(int kolizja);
 	void mov_left_A(int kolizja);
 	void mov_right_D(int kolizja);
-
 	void fire_5(Pocisk &pc);
 
 	void hp_check();

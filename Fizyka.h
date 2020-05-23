@@ -12,12 +12,9 @@ public:
 
 	int kolizja[9][5];
 
-private:
-
 public:
 
 	void set_kolizja();
-
 	void check_kolizja(Obiekt_mov pl[9]);
 };
 

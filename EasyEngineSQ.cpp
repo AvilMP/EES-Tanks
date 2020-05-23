@@ -20,15 +20,15 @@ void player_mov(); // ruch gracza
 // obiekty
 
 Mapa level_0(45,74);
-Obiekt_mov player[9] = { Obiekt_mov(10, 10, 1, 1, 1, 1), Obiekt_mov(15, 20, 2, 1, 1, 1), Obiekt_mov(30, 30, 2, 1, 1, 1), 
-                         Obiekt_mov(40, 10, 2, 1, 1, 1), Obiekt_mov(40, 20, 3, 1, 1, 1), Obiekt_mov(40, 30, 4, 1, 1, 1),
-                         Obiekt_mov(40, 55, 2, 1, 1, 1), Obiekt_mov(40, 60, 3, 1, 1, 1), Obiekt_mov(40, 70, 4, 1, 1, 1), };
+Obiekt_mov player[9] = { Obiekt_mov(40, 36, 1, 1, 1, 1), Obiekt_mov(5, 10, 2, 1, 1, 1), Obiekt_mov(5, 15, 2, 1, 1, 1), 
+                         Obiekt_mov(5, 20, 2, 1, 1, 1), Obiekt_mov(5, 30, 3, 1, 1, 1), Obiekt_mov(5, 40, 4, 1, 1, 1),
+                         Obiekt_mov(5, 50, 2, 1, 1, 1), Obiekt_mov(5, 60, 3, 1, 1, 1), Obiekt_mov(5, 70, 4, 1, 1, 1), };
 
-Pocisk pocisk[9] = { Pocisk(5,5,1,1,2,0), Pocisk(5,7,3,1,2,0), Pocisk(5,8,3,1,2,0),
-                     Pocisk(5,9,3,1,2,0), Pocisk(5,12,3,1,2,0), Pocisk(5,15,3,1,2,0),
-                     Pocisk(5,25,3,1,2,0), Pocisk(5,35,3,1,2,0), Pocisk(5,45,3,1,2,0), };
+Pocisk pocisk[9] = { Pocisk(1,1,1,1,2,0), Pocisk(1,1,1,1,2,0), Pocisk(1,1,1,1,2,0),
+                     Pocisk(1,1,1,1,2,0), Pocisk(1,1,1,1,2,0), Pocisk(1,1,1,1,2,0),
+                     Pocisk(1,1,1,1,2,0), Pocisk(1,1,1,1,2,0), Pocisk(1,1,1,1,2,0), };
 
-//Pocisk pocisk[9];
+int points;
 
 Fizyka kolizja;
 
@@ -59,19 +59,18 @@ int main()
         for (int i = 1; i < 9; i++)
         {
             player[i].hp_check();
-                kolizja.check_kolizja(&player[0]);
+            kolizja.check_kolizja(&player[0]);
             player[i].ai_module(kolizja.kolizja[i][1], kolizja.kolizja[i][3], kolizja.kolizja[i][2], kolizja.kolizja[i][4], pocisk[i]);
-        }
-
-        for (int pc = 0; pc < 9; pc ++)
-        {
-            for (int ob = 0; ob < 9; ob++)
+            for (int pc = 0; pc < 9; pc++)
             {
-                if (pc == ob)
+                for (int ob = 0; ob < 9; ob++)
                 {
-                    ob++;
+                    if (pc == ob)
+                    {
+                        ob++;
+                    }
+                    hit_check(pocisk[pc], player[ob]);
                 }
-                hit_check(pocisk[pc],player[ob]);
             }
         }
 
@@ -87,11 +86,12 @@ int main()
 void hit_check(Pocisk &pocisk, Obiekt_mov &obiekt)
 {
     if ((((pocisk.pos_x - 1) == obiekt.pos_x) || ((pocisk.pos_x + 1) == obiekt.pos_x) || (pocisk.pos_x == obiekt.pos_x)) &&
-        (((pocisk.pos_y - 1) == obiekt.pos_y) || ((pocisk.pos_y + 1) == obiekt.pos_y) ||  (pocisk.pos_y == obiekt.pos_y)))
+        (((pocisk.pos_y - 1) == obiekt.pos_y) || ((pocisk.pos_y + 1) == obiekt.pos_y) || (pocisk.pos_y == obiekt.pos_y)))
     {
         obiekt.hp = 0;
         pocisk.visible = 0;
         pocisk.reload = 0;
+        points++;
     }
 }
 

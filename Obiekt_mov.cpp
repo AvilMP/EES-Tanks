@@ -122,30 +122,30 @@ void Obiekt_mov::ai_module(int kol_w, int kol_s, int kol_a, int kol_d, Pocisk &p
 
 	switch (random)
 	{
-	case 1:
-	{
-		mov_up_W(kol_w);
-		break;
-	}
-	case 2:
-	{
-		mov_down_S(kol_s);
-		break;
-	}
-	case 3:
-	{
-		mov_left_A(kol_a);
-		break;
-	}
-	case 4:
-	{
-		mov_right_D(kol_d);
-		break;
-	}
-	case 5:
-	{
-		fire_5(pcx);
-		break;
-	}
+		case 1:
+		{
+			mov_up_W(kol_w);
+			break;
+		}
+		case 2:
+		{
+			mov_down_S(kol_s);
+			break;
+		}
+		case 3:
+		{
+			mov_left_A(kol_a);
+			break;
+		}
+		case 4:
+		{
+			mov_right_D(kol_d);
+			break;
+		}
+		case 5:
+		{
+			fire_5(pcx);
+			break;
+		}
 	}
 }

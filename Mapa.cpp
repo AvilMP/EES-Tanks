@@ -10,7 +10,6 @@ Mapa::Mapa(int wysokosc, int szerokosc)
 {
 	this->wysokosc = wysokosc;
 	this->szerokosc = szerokosc;
-	//this->liczba_bot = liczba_bot;
 }
 
 void Mapa::map_generator(Obiekt_mov p[9], Pocisk s[9])

@@ -14,7 +14,6 @@ public:
 	friend class Mapa;
 	friend void hit_check(Pocisk &pocisk, Obiekt_mov &obiekt);
 	
-
 public:
 
 	int pos_x, pos_y; // 1, 2

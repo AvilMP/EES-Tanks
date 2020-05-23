@@ -18,8 +18,6 @@ private:
 	int wysokosc;	// okna
 	int szerokosc;	// okna
 
-
-
 public:
 	Mapa(int wysokosc, int szerokosc);
 
