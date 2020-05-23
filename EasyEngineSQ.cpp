@@ -13,7 +13,7 @@ using namespace std;
 
 // glowne funkcje;
 
-bool hit_check(Pocisk pocisk, Obiekt_mov obiekt);    //sprawdza trafienie.
+void hit_check(Pocisk &pocisk, Obiekt_mov &obiekt);    //sprawdza trafienie.
 
 void player_mov(); // ruch gracza
 
@@ -24,9 +24,9 @@ Obiekt_mov player[9] = { Obiekt_mov(10, 10, 1, 1, 1, 1), Obiekt_mov(15, 20, 2, 1
                          Obiekt_mov(40, 10, 2, 1, 1, 1), Obiekt_mov(40, 20, 3, 1, 1, 1), Obiekt_mov(40, 30, 4, 1, 1, 1),
                          Obiekt_mov(40, 55, 2, 1, 1, 1), Obiekt_mov(40, 60, 3, 1, 1, 1), Obiekt_mov(40, 70, 4, 1, 1, 1), };
 
-Pocisk pocisk[9] = { Pocisk(5,5,1,1,2,1), Pocisk(5,7,3,1,2,1), Pocisk(5,8,3,1,2,1),
-                     Pocisk(5,9,3,1,2,1), Pocisk(5,12,3,1,2,1), Pocisk(5,15,3,1,2,1),
-                     Pocisk(5,25,3,1,2,1), Pocisk(5,35,3,1,2,1), Pocisk(5,45,3,1,2,1), };
+Pocisk pocisk[9] = { Pocisk(5,5,1,1,2,0), Pocisk(5,7,3,1,2,0), Pocisk(5,8,3,1,2,0),
+                     Pocisk(5,9,3,1,2,0), Pocisk(5,12,3,1,2,0), Pocisk(5,15,3,1,2,0),
+                     Pocisk(5,25,3,1,2,0), Pocisk(5,35,3,1,2,0), Pocisk(5,45,3,1,2,0), };
 
 //Pocisk pocisk[9];
 
@@ -39,18 +39,18 @@ int main()
     cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ The Tanks ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
     cout << " Pls use fullscreen :)\n";
 
-    for (int i = 0; i <= 30; i++)
+    for (int i = 0; i <= 35; i++)
     {
         cout << " . ";
-        Sleep(80);
+        Sleep(50);
     }
 
     system("cls");
 
-
     while (true)
     {
-                 kolizja.check_kolizja(&player[0]);
+        player[0].hp_check();
+                kolizja.check_kolizja(&player[0]);
         player_mov();
         for (int p = 0; p < 9; p++)
         {
@@ -58,27 +58,41 @@ int main()
         }
         for (int i = 1; i < 9; i++)
         {
-                 kolizja.check_kolizja(&player[0]);
-             player[i].ai_module(kolizja.kolizja[i][1], kolizja.kolizja[i][3], kolizja.kolizja[i][2], kolizja.kolizja[i][4]);
+            player[i].hp_check();
+                kolizja.check_kolizja(&player[0]);
+            player[i].ai_module(kolizja.kolizja[i][1], kolizja.kolizja[i][3], kolizja.kolizja[i][2], kolizja.kolizja[i][4], pocisk[i]);
+        }
+
+        for (int pc = 0; pc < 9; pc ++)
+        {
+            for (int ob = 0; ob < 9; ob++)
+            {
+                if (pc == ob)
+                {
+                    ob++;
+                }
+                hit_check(pocisk[pc],player[ob]);
+            }
         }
 
         level_0.map_generator(&player[0], &pocisk[0]);
 
-        Sleep(400);
+        Sleep(444);
         system("cls");
     }
 
     return 0;
 }
 
-bool hit_check(Pocisk pocisk, Obiekt_mov obiekt)
+void hit_check(Pocisk &pocisk, Obiekt_mov &obiekt)
 {
-    if (((pocisk.pos_x - 1) == obiekt.pos_x) || ((pocisk.pos_x + 1) == obiekt.pos_x) &&
-        ((pocisk.pos_y - 1) == obiekt.pos_y) || ((pocisk.pos_y + 1) == obiekt.pos_y))
+    if ((((pocisk.pos_x - 1) == obiekt.pos_x) || ((pocisk.pos_x + 1) == obiekt.pos_x) || (pocisk.pos_x == obiekt.pos_x)) &&
+        (((pocisk.pos_y - 1) == obiekt.pos_y) || ((pocisk.pos_y + 1) == obiekt.pos_y) ||  (pocisk.pos_y == obiekt.pos_y)))
     {
-        return true;
+        obiekt.hp = 0;
+        pocisk.visible = 0;
+        pocisk.reload = 0;
     }
-    else return false;
 }
 
 void player_mov()

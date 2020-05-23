@@ -15,7 +15,7 @@ public:
 	friend class Mapa;
 	friend class Fizyka;
 
-	friend bool hit_check(Pocisk pocisk, Obiekt_mov obiekt);
+	friend void hit_check(Pocisk &pocisk, Obiekt_mov &obiekt);
 	
 
 private:
@@ -40,5 +40,7 @@ public:
 
 	void fire_5(Pocisk &pc);
 
-	void ai_module(int kol_w, int kol_s, int kol_a, int kol_d);
+	void hp_check();
+
+	void ai_module(int kol_w, int kol_s, int kol_a, int kol_d, Pocisk &pcx);
 };

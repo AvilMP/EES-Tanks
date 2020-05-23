@@ -21,9 +21,9 @@ void Fizyka::check_kolizja(Obiekt_mov pl[9])
 {
 	int break_point = 0;
 
-	for (int i = 0; i < 9; i++)			////
-	{									///// !!!!!!!!!!!!!! fix!!
-		for (int j = 0; j < 9; j++)		////
+	for (int i = 0; i < 9; i++)
+	{								
+		for (int j = 0; j < 9; j++)		
 		{
 			if (i == j)
 			{
@@ -64,6 +64,7 @@ void Fizyka::check_kolizja(Obiekt_mov pl[9])
 			{
 				kolizja[i][4] = 0;
 			}
+
 
 			/// przerwanie wyszukiwania nowych kilizji.
 			for (int b = 1; b <= 4; b++)

@@ -12,7 +12,7 @@ class Pocisk
 public:
 
 	friend class Mapa;
-	friend bool hit_check(Pocisk pocisk, Obiekt_mov obiekt);
+	friend void hit_check(Pocisk &pocisk, Obiekt_mov &obiekt);
 	
 
 public:
@@ -22,10 +22,11 @@ public:
 	int power; // opcjonanie;
 	int speed;
 	int visible;
+	int reload;
 
 public:
 
-	Pocisk(int = 0, int = 0, int = 0, int = 1, int = 1, int = 0);
+	Pocisk(int = 0, int = 0, int = 0, int = 1, int = 1, int = 0, int = 0);
 
 	~Pocisk();
 

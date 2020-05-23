@@ -28,7 +28,7 @@ void Mapa::map_generator(Obiekt_mov p[9], Pocisk s[9])
 					cout << "<>";
 					y++;
 				}
-				if (((((x + 1) == p[i].pos_x) && ((y + 1) == p[i].pos_y)) || ((x == p[i].pos_x) && ((y + 1) == p[i].pos_y)) || (((x - 1) == p[i].pos_x) && ((y + 1) == p[i].pos_y))) && p[i].hp != 0)	// chck pozycja
+				if ((((x + 1) == p[i].pos_x) && ((y + 1) == p[i].pos_y)) || ((x == p[i].pos_x) && ((y + 1) == p[i].pos_y)) || (((x - 1) == p[i].pos_x) && ((y + 1) == p[i].pos_y)))	// chck pozycja
 				{
 					if (p[i].direction == 1)					// check kierunek W
 					{

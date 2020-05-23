@@ -67,43 +67,58 @@ void Obiekt_mov::fire_5(Pocisk &pc)
 	if (direction == 1)
 	{
 		pc.direction = 1;
-		pc.pos_x = (pos_x - 3);
+		pc.pos_x = (pos_x - 1);
 		pc.pos_y = pos_y;
 	}
 	else if (direction == 3)
 	{
 		pc.direction = 3;
-		pc.pos_x = (pos_x + 3);
+		pc.pos_x = (pos_x + 1);
 		pc.pos_y = pos_y;
 	}
 	else if (direction == 2)
 	{
 		pc.direction = 2;
 		pc.pos_x = pos_x;
-		pc.pos_y = (pos_y - 3);
+		pc.pos_y = (pos_y - 1);
 	}
 	else if (direction == 4)
 	{
 		pc.direction = 4;
 		pc.pos_x = pos_x ;
-		pc.pos_y = (pos_y + 4);
+		pc.pos_y = (pos_y + 1);
 	}
 }
 
-void Obiekt_mov::ai_module(int kol_w, int kol_s, int kol_a, int kol_d)
+void Obiekt_mov::hp_check()
+{
+	if (hp <= 0)
+	{
+		pos_x = 100000;
+		pos_y = 100000;
+	}
+}
+
+void Obiekt_mov::ai_module(int kol_w, int kol_s, int kol_a, int kol_d, Pocisk &pcx)
 {
 	srand(time(NULL));
 
 	static int changer = 1;
 
 	int random = 1;
-	changer += 1;
+	int shoot = 1;
 
-
+	changer +=  1;
 
 	random = rand() % 4 + 1;
+	shoot = rand() % 100 + 1;
 
 	random = (changer + random) % 4 + 1;
+
+	if (shoot <= 25)
+	{
+		random ++;
+	}
 
 	switch (random)
 	{
@@ -129,6 +144,7 @@ void Obiekt_mov::ai_module(int kol_w, int kol_s, int kol_a, int kol_d)
 	}
 	case 5:
 	{
+		fire_5(pcx);
 		break;
 	}
 	}

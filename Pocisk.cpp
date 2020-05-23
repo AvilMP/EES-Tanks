@@ -5,7 +5,7 @@
 
 using namespace std;
 
-Pocisk::Pocisk(int posx, int posy, int direct, int pow, int seed, int vis)
+Pocisk::Pocisk(int posx, int posy, int direct, int pow, int seed, int vis, int rel)
 {
 	pos_x     = posx;
 	pos_y     = posy;
@@ -13,6 +13,7 @@ Pocisk::Pocisk(int posx, int posy, int direct, int pow, int seed, int vis)
 	power     = pow; // opjonalne;
 	speed     = seed;
 	visible   = vis;
+	reload    = rel;
 }
 
 Pocisk::~Pocisk()
@@ -47,6 +48,5 @@ void Pocisk::new_pos()
 				pos_y += speed;
 			}
 		}
-
 	}
 }
