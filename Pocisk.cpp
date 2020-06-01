@@ -5,7 +5,7 @@
 
 using namespace std;
 
-Pocisk::Pocisk(int posx, int posy, int direct, int pow, int seed, int vis, int rel)
+Pocisk::Pocisk(int posx, int posy, int direct, int pow, int seed, int vis, int rel, int idp)
 {
 	pos_x     = posx;
 	pos_y     = posy;
@@ -14,6 +14,7 @@ Pocisk::Pocisk(int posx, int posy, int direct, int pow, int seed, int vis, int r
 	speed     = seed;
 	visible   = vis;
 	reload    = rel;
+	id		  = idp;
 }
 
 Pocisk::~Pocisk()
@@ -28,6 +29,7 @@ void Pocisk::new_pos()
 		if ((pos_x <= 1) || (pos_x >= 44) || (pos_y <= 1) || (pos_y >= 73))
 		{
 			visible = 0;
+			reload = 0;
 		}
 		else
 		{

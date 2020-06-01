@@ -22,10 +22,11 @@ public:
 	int speed;
 	int visible;
 	int reload;
+	int id;
 
 public:
 
-	Pocisk(int = 0, int = 0, int = 0, int = 1, int = 1, int = 0, int = 0);
+	Pocisk(int = 0, int = 0, int = 0, int = 1, int = 1, int = 0, int = 0, int = 0);
 
 	~Pocisk();
 

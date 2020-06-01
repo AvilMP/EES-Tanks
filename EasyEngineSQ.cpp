@@ -9,8 +9,6 @@
 #include "Obiekt_mov.h"
 #include "Pocisk.h"
 
-using namespace std;
-
 // glowne funkcje;
 
 void hit_check(Pocisk &pocisk, Obiekt_mov &obiekt);    //sprawdza trafienie.
@@ -19,16 +17,17 @@ void player_mov(); // ruch gracza
 
 // obiekty
 
-Mapa level_0(45,74);
-Obiekt_mov player[9] = { Obiekt_mov(40, 36, 1, 1, 1, 1), Obiekt_mov(5, 10, 2, 1, 1, 1), Obiekt_mov(5, 15, 2, 1, 1, 1), 
+Mapa level_0(45,74);        // obiekt(x,y,dir,hp,speed,id);
+Obiekt_mov player[9] = { Obiekt_mov(40, 36, 1, 1, 1, 0), Obiekt_mov(5, 10, 2, 1, 1, 1), Obiekt_mov(5, 15, 2, 1, 1, 1), 
                          Obiekt_mov(5, 20, 2, 1, 1, 1), Obiekt_mov(5, 30, 3, 1, 1, 1), Obiekt_mov(5, 40, 4, 1, 1, 1),
                          Obiekt_mov(5, 50, 2, 1, 1, 1), Obiekt_mov(5, 60, 3, 1, 1, 1), Obiekt_mov(5, 70, 4, 1, 1, 1), };
 
-Pocisk pocisk[9] = { Pocisk(1,1,1,1,2,0), Pocisk(1,1,1,1,2,0), Pocisk(1,1,1,1,2,0),
-                     Pocisk(1,1,1,1,2,0), Pocisk(1,1,1,1,2,0), Pocisk(1,1,1,1,2,0),
-                     Pocisk(1,1,1,1,2,0), Pocisk(1,1,1,1,2,0), Pocisk(1,1,1,1,2,0), };
+                           // pocisk(x,y,dir,pow,speed,vis,rel,id);
+Pocisk pocisk[9] = { Pocisk(100,100,1,1,2,0,0,0), Pocisk(99,99,1,1,2,0,0,1), Pocisk(98,98,1,1,2,0,0,1),
+                     Pocisk(97,97,1,1,2,0,0,1), Pocisk(96,96,1,1,2,0,0,1), Pocisk(95,95,1,1,2,0,0,1),
+                     Pocisk(94,94,1,1,2,0,0,1), Pocisk(93,93,1,1,2,0,0,1), Pocisk(92,92,1,1,2,0,0,1), };
 
-int points;
+int points, end_point, win_point;
 
 Fizyka kolizja;
 
@@ -36,22 +35,27 @@ int main()
 {
     kolizja.set_kolizja();
 
-    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ The Tanks ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
-    cout << " Pls use fullscreen :)\n";
+    std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ The Tanks ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
+    std::cout << " Pls use fullscreen :)\n";
 
     for (int i = 0; i <= 35; i++)
     {
-        cout << " . ";
+        std::cout << " . ";
         Sleep(50);
     }
 
-    system("cls");
+    std::system("cls");
 
     while (true)
     {
         player[0].hp_check();
                 kolizja.check_kolizja(&player[0]);
         player_mov();
+
+        // test
+
+        // test
+
         for (int p = 0; p < 9; p++)
         {
             pocisk[p].new_pos();
@@ -73,12 +77,26 @@ int main()
                 }
             }
         }
-
         level_0.map_generator(&player[0], &pocisk[0]);
+        std::cout << "\n Twoje Punkty: " << points;
+
 
         Sleep(444);
-        system("cls");
+        std::system("cls");
     }
+
+    if (win_point == 0)
+    {
+        std::cout << " Przegrales :C \n";
+    }
+    else
+    {
+        std::cout << " Wygrales :> \n";
+    }
+
+
+    std::cout << "\n Twoje Punkty: " << points;
+    std::cout << " !!! ";
 
     return 0;
 }
@@ -88,10 +106,14 @@ void hit_check(Pocisk &pocisk, Obiekt_mov &obiekt)
     if ((((pocisk.pos_x - 1) == obiekt.pos_x) || ((pocisk.pos_x + 1) == obiekt.pos_x) || (pocisk.pos_x == obiekt.pos_x)) &&
         (((pocisk.pos_y - 1) == obiekt.pos_y) || ((pocisk.pos_y + 1) == obiekt.pos_y) || (pocisk.pos_y == obiekt.pos_y)))
     {
-        obiekt.hp = 0;
         pocisk.visible = 0;
         pocisk.reload = 0;
-        points++;
+
+        if (pocisk.id != obiekt.id)
+        {
+            obiekt.hp -= pocisk.power;
+            points++;
+        }
     }
 }
 

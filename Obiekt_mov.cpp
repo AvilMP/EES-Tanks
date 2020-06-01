@@ -10,14 +10,14 @@
 
 using namespace std;
 
-Obiekt_mov::Obiekt_mov(int posx, int posy, int direct, int hitp, int seed,int reloading)
+Obiekt_mov::Obiekt_mov(int posx, int posy, int direct, int hitp, int seed, int idp)
 {
 	pos_x     = posx;
 	pos_y	  = posy;
 	direction = direct;
 	hp        = hitp;
 	speed     = seed;
-	reload    = reloading;
+	id		  = idp;
 }
 
 Obiekt_mov::~Obiekt_mov()
@@ -63,30 +63,34 @@ void Obiekt_mov::mov_right_D(int kolizja)
 
 void Obiekt_mov::fire_5(Pocisk &pc)
 {
-	pc.visible = 1;
-	if (direction == 1)
+	if (pc.reload == 0)
 	{
-		pc.direction = 1;
-		pc.pos_x = (pos_x - 1);
-		pc.pos_y = pos_y;
-	}
-	else if (direction == 3)
-	{
-		pc.direction = 3;
-		pc.pos_x = (pos_x + 1);
-		pc.pos_y = pos_y;
-	}
-	else if (direction == 2)
-	{
-		pc.direction = 2;
-		pc.pos_x = pos_x;
-		pc.pos_y = (pos_y - 1);
-	}
-	else if (direction == 4)
-	{
-		pc.direction = 4;
-		pc.pos_x = pos_x ;
-		pc.pos_y = (pos_y + 1);
+		pc.reload = 1;
+		pc.visible = 1;
+		if (direction == 1)
+		{
+			pc.direction = 1;
+			pc.pos_x = (pos_x - 1);
+			pc.pos_y = pos_y;
+		}
+		else if (direction == 3)
+		{
+			pc.direction = 3;
+			pc.pos_x = (pos_x + 1);
+			pc.pos_y = pos_y;
+		}
+		else if (direction == 2)
+		{
+			pc.direction = 2;
+			pc.pos_x = pos_x;
+			pc.pos_y = (pos_y - 1);
+		}
+		else if (direction == 4)
+		{
+			pc.direction = 4;
+			pc.pos_x = pos_x;
+			pc.pos_y = (pos_y + 1);
+		}
 	}
 }
 

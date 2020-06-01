@@ -19,15 +19,17 @@ public:
 
 private:
 
-	int pos_x, pos_y;	 // 1,2
-	int direction;		 // 3
-	int hp;				 // 4
-	int speed;			 // 5
-	int reload;			 // 6
+	int pos_x, pos_y;
+	int direction;
+public:						
+	int hp;
+private:
+	int speed;			
+	int id;
 	
 public:
 
-	Obiekt_mov(int = 2, int = 2, int = 0, int = 3, int = 1, int = 1);
+	Obiekt_mov(int = 2, int = 2, int = 0, int = 3, int = 1, int = 0);
 
 	~Obiekt_mov();
 
