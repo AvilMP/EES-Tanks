@@ -65,7 +65,7 @@ void Fizyka::check_kolizja(Obiekt_mov pl[9])
 				kolizja[i][4] = 0;
 			}
 
-			/// przerwanie wyszukiwania nowych kilizji.
+			/// przerwanie wyszukiwania nowych kilizji. (zabezpiecznie przed zerowaniem)
 			for (int b = 1; b <= 4; b++)
 			{
 				if (kolizja[i][b] != 0)

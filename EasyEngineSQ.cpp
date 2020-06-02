@@ -12,8 +12,11 @@
 // glowne funkcje;
 
 void hit_check(Pocisk &pocisk, Obiekt_mov &obiekt);    //sprawdza trafienie.
-
 void player_mov(); // ruch gracza
+void ending();
+void win_check();
+void panel_info();
+void baner();
 
 // obiekty
 
@@ -27,7 +30,7 @@ Pocisk pocisk[9] = { Pocisk(100,100,1,1,2,0,0,0), Pocisk(99,99,1,1,2,0,0,1), Poc
                      Pocisk(97,97,1,1,2,0,0,1), Pocisk(96,96,1,1,2,0,0,1), Pocisk(95,95,1,1,2,0,0,1),
                      Pocisk(94,94,1,1,2,0,0,1), Pocisk(93,93,1,1,2,0,0,1), Pocisk(92,92,1,1,2,0,0,1), };
 
-int points, end_point, win_point;
+int points, break_point, win_point;
 
 Fizyka kolizja;
 
@@ -35,16 +38,7 @@ int main()
 {
     kolizja.set_kolizja();
 
-    std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ The Tanks ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
-    std::cout << " Pls use fullscreen :)\n";
-
-    for (int i = 0; i <= 35; i++)
-    {
-        std::cout << " . ";
-        Sleep(50);
-    }
-
-    std::system("cls");
+    baner();
 
     while (true)
     {
@@ -52,51 +46,45 @@ int main()
                 kolizja.check_kolizja(&player[0]);
         player_mov();
 
-        // test
-
-        // test
-
         for (int p = 0; p < 9; p++)
         {
             pocisk[p].new_pos();
         }
+
         for (int i = 1; i < 9; i++)
         {
             player[i].hp_check();
             kolizja.check_kolizja(&player[0]);
             player[i].ai_module(kolizja.kolizja[i][1], kolizja.kolizja[i][3], kolizja.kolizja[i][2], kolizja.kolizja[i][4], pocisk[i]);
-            for (int pc = 0; pc < 9; pc++)
+        }
+
+        for (int pc = 0; pc < 9; pc++)
+        {
+            for (int ob = 0; ob < 9; ob++)
             {
-                for (int ob = 0; ob < 9; ob++)
+                if (pc == ob)
                 {
-                    if (pc == ob)
-                    {
-                        ob++;
-                    }
-                    hit_check(pocisk[pc], player[ob]);
+                    ob++;
                 }
+                hit_check(pocisk[pc], player[ob]);
             }
         }
-        level_0.map_generator(&player[0], &pocisk[0]);
-        std::cout << "\n Twoje Punkty: " << points;
 
+        level_0.map_generator(&player[0], &pocisk[0]);
+
+        panel_info();
+        win_check();
+
+        if (break_point == 1)
+        {
+            break;
+        }
 
         Sleep(444);
         std::system("cls");
     }
 
-    if (win_point == 0)
-    {
-        std::cout << " Przegrales :C \n";
-    }
-    else
-    {
-        std::cout << " Wygrales :> \n";
-    }
-
-
-    std::cout << "\n Twoje Punkty: " << points;
-    std::cout << " !!! ";
+    ending();
 
     return 0;
 }
@@ -159,4 +147,70 @@ void player_mov()
             _getche();
         }
     }
+}
+
+void ending()
+{
+    std::system("cls");
+
+    if (win_point != 1)
+    {
+        std::cout << " Przegrales :C \n";
+    }
+    else
+    {
+        std::cout << " Wygrales :> \n";
+    }
+
+    std::cout << "\n Twoje Punkty: " << points;
+    std::cout << " !!! ";
+
+    for (int i = 0; i <= 100; i++)
+    {
+        system("Pause");
+    }
+}
+
+void win_check()
+{
+    int win = 0;
+    for (int i = 1; i < 9; i++)
+    {
+        if (player[i].hp == 0)
+        {
+            win++;
+        }
+    }
+    if (win == 8)
+    {
+        break_point = 1;
+        win_point = 1;
+    }
+
+    if (player[0].hp == 0)
+    {
+        break_point = 1;
+    }
+}
+
+void panel_info()
+{
+    std::cout << "\n";
+    std::cout << " Twoje Punkty: " << points; 
+    std::cout << "\n";  
+    std::cout << " HP: " << player[0].hp;
+}
+
+void baner()
+{
+    std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ The Tanks ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~";
+    std::cout << " Pls use fullscreen :)\n";
+
+    for (int i = 0; i <= 35; i++)
+    {
+        std::cout << " . ";
+        Sleep(50);
+    }
+
+    std::system("cls");
 }

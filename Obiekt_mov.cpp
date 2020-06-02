@@ -3,7 +3,6 @@
 #include "Fizyka.h"
 #include "Pocisk.h"
 
-
 #include <iostream>
 #include <time.h>
 
