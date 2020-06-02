@@ -15,7 +15,6 @@ Mapa::Mapa(int wysokosc, int szerokosc)
 void Mapa::map_generator(Obiekt_mov p[9], Pocisk s[9])
 {
 	int control = 1;
-
 	for (int x = 0; x <= wysokosc; x++)				// os x (pionowa)
 	{
 		for (int y = 0; y <= szerokosc; y++)		// os y	(pozioma)

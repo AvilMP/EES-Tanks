@@ -71,7 +71,6 @@ int main()
         }
 
         level_0.map_generator(&player[0], &pocisk[0]);
-
         panel_info();
         win_check();
 
