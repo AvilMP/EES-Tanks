@@ -107,6 +107,7 @@ void Obiekt_mov::ai_module(int kol_w, int kol_s, int kol_a, int kol_d, Pocisk &p
 	srand(time(NULL));
 
 	static int changer = 1;
+
 	int random = 1;
 	int shoot = 1;
 

@@ -3,7 +3,6 @@
 
 #include <iostream>
 
-
 using namespace std;
 
 Pocisk::Pocisk(int posx, int posy, int direct, int pow, int seed, int vis, int rel, int idp)
